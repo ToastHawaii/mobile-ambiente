@@ -1,4 +1,4 @@
-var beruf = [
+const beruf = [
   "Abt/Äbtissin",
   "Altenpfleger/in",
   "Apotheker/in",
@@ -186,7 +186,7 @@ var beruf = [
   "Zugbegleiter/in"
 ];
 
-var hobby = [
+const hobby = [
   "Angeln",
   "Büchernarr",
   "Hobbykoch",
@@ -208,7 +208,7 @@ var hobby = [
   "Kegeln, Bowling"
 ];
 
-var tick = [
+const tick = [
   "Kratzt sich ständig am Kopf",
   "Ständiges Nasejucken",
   "Zucken der Mundwinkel",
@@ -223,7 +223,7 @@ var tick = [
   "Pyromanie (Zwang, ein Feuer zu legen)"
 ];
 
-var gefuehl = [
+const gefuehl = [
   "abgespannt",
   "ablehnend",
   "achtsam",
@@ -526,7 +526,7 @@ var gefuehl = [
   "zynisch"
 ];
 
-var gefuehlAngenehm = [
+const gefuehlAngenehm = [
   "achtsam",
   "akzeptierend",
   "angeregt",
@@ -663,7 +663,7 @@ var gefuehlAngenehm = [
   "zuversichtlich"
 ];
 
-var koerperteil = [
+const koerperteil = [
   "Achsel",
   "Arm",
   "Auge",
@@ -708,7 +708,7 @@ var koerperteil = [
   "Zunge"
 ];
 
-var tier = [
+const tier = [
   "Aal",
   "Adler",
   "Affe",
@@ -917,7 +917,7 @@ var tier = [
   "Zitteraal"
 ];
 
-var fabelwesen = [
+const fabelwesen = [
   "Bigfoot",
   "Dämon",
   "Drache",
@@ -956,7 +956,7 @@ var fabelwesen = [
   "Zwerg"
 ];
 
-var phobie = [
+const phobie = [
   "Aviophopie (Flugangst)",
   "Anuptaphobie (Angst alleinstehend zu bleiben)",
   "Klaustrophobie (Angst vor engen Räumen)",
@@ -980,7 +980,7 @@ var phobie = [
   "Phobophobie (Angst eine Phobie zu erleiden)"
 ];
 
-var ort = [
+const ort = [
   "Messestand",
   "Muckibude/Fitnessstudio",
   "Nagelstudio",
@@ -1131,7 +1131,7 @@ var ort = [
   "Zu-Spät-Kommer-Loge im Theater"
 ];
 
-var gebaeude = [
+const gebaeude = [
   "Aussichtsturm",
   "Bauernhaus",
   "Geschäft",
@@ -1183,7 +1183,7 @@ var gebaeude = [
   "Zweithaarstudio"
 ];
 
-var land = [
+const land = [
   "Argentinien",
   "Australien",
   "Belgien",
@@ -1200,7 +1200,7 @@ var land = [
   "USA"
 ];
 
-var raum = [
+const raum = [
   "Bibliothek",
   "Einwohnermeldeamt",
   "Kino",
@@ -1235,7 +1235,7 @@ var raum = [
   "Haushaltsraum"
 ];
 
-var fortbewegungsmittel = [
+const fortbewegungsmittel = [
   "Schiff/U-Boot (drauf oder drinnen)",
   "Kreuzfahrtschiff",
   "Fischkutter",
@@ -1255,7 +1255,7 @@ var fortbewegungsmittel = [
   "auf dem Pferd"
 ];
 
-var routine = [
+const routine = [
   "Tapezieren",
   "Streichen (Wände, Fenster)",
   "Bügeln",
@@ -1294,7 +1294,7 @@ var routine = [
   "handwerklich arbeiten (z.B. Schuh besohlen)"
 ];
 
-var genreFernseh = [
+const genreFernseh = [
   "Abenteuerfilm",
   "Actionfilm",
   "Adelsromanze",
@@ -1383,7 +1383,7 @@ var genreFernseh = [
   "XY Ungelöst"
 ];
 
-var genreMusik = [
+const genreMusik = [
   "Gregorianische Gesänge",
   "Mittelalterliche Musik",
   "Kirchenmusik / Orgel und Coral",
@@ -1444,7 +1444,7 @@ var genreMusik = [
   "Kinderlied"
 ];
 
-var beziehung = [
+const beziehung = [
   "Ehepaar",
   "Vater/Kind",
   "Mutter/Kind",
