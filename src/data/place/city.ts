@@ -6,11 +6,13 @@ export const city: ThingEntity = {
   sounds: [
     {
       name: "Strasse",
+      emoji: "cityscape",
       files: [{ path: "city/residential-traffic.mp3" }],
       type: "background"
     },
     {
       name: "Hupe",
+      emoji: "red_car",
       files: [{ path: "city/car-horn-2.mp3" }],
       type: "effect"
     }

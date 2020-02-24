@@ -13,3 +13,7 @@
 .hidden {
   display: none !important;
 }
+
+.button + .button {
+  margin-left: 1em;
+}

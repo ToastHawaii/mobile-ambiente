@@ -2,12 +2,7 @@ import { forest } from "./data/place/forest";
 import { Howl } from "howler";
 import { city } from "./data/place/city";
 
-interface ILiteEvent<T> {
-  on(handler: { (data: T): void }): void;
-  off(handler: { (data: T): void }): void;
-}
-
-class LiteEvent<T> implements ILiteEvent<T> {
+class LiteEvent<T> {
   private handlers: { (data: T): void }[] = [];
 
   public on(handler: { (data: T): void }): void {
@@ -22,7 +17,7 @@ class LiteEvent<T> implements ILiteEvent<T> {
     this.handlers.slice(0).forEach(h => h(data));
   }
 
-  public expose(): ILiteEvent<T> {
+  public expose(): LiteEvent<T> {
     return this;
   }
 }
@@ -48,17 +43,16 @@ export interface BackgroundSource {
 
 export interface Categorie {
   name: string;
-  things: Thing[];
+  things: ThingModel[];
 }
 
-export interface Thing {
+export interface ThingModel {
   name: string;
   emoji: string;
-  sounds: BackgroundSound | EffectSound;
 }
 
 export interface Sound {
-  thing: Thing;
+  thing: ThingModel;
   name: string;
   selected: true;
   state: "play" | "stop";
@@ -87,6 +81,7 @@ export interface ThingEntity {
 
 export interface SoundEntity {
   name: string;
+  emoji: string;
   files: FileEntity[];
   type: "background" | "effect";
 }
@@ -103,12 +98,14 @@ export const categories: CategorieEntity[] = [
 
 export function init(selector: string, categories: CategorieEntity[]) {
   const $main = $(selector);
-  const $menu = $(`<div class="ui pointing secondary menu"></div>`).appendTo(
-    $main
-  );
+  const $menu = $(
+    `<div class="ui pointing secondary large menu"></div>`
+  ).appendTo($main);
 
   const backgroundViewModel = new CurrentSoundViewModel(`.background`);
   const effectViewModel = new CurrentSoundViewModel(`.effect`);
+  const soundModels: SoundModel[] = [];
+  const soundViewModels: SoundViewModel[] = [];
 
   for (const c of categories) {
     $(`<a class="item" data-tab="${c.name}">${c.name}</a>`).appendTo($menu);
@@ -117,7 +114,7 @@ export function init(selector: string, categories: CategorieEntity[]) {
     ).insertAfter($menu);
 
     const $thingsMenu = $(
-      `<div class="ui pointing labeled icon menu"></div>`
+      `<div class="ui pointing labeled icon large menu"></div>`
     ).appendTo($content);
 
     for (const t of c.things) {
@@ -132,19 +129,41 @@ export function init(selector: string, categories: CategorieEntity[]) {
       ).appendTo($content);
 
       for (const s of t.sounds) {
-        const soundModel = new SoundModel(s);
+        const soundModel = new SoundModel(t, s);
+        soundModels.push(soundModel);
+
+        const soundViewModel = new SoundViewModel($thingsContent, soundModel);
+        soundViewModels.push(soundViewModel);
+
+        soundModel.OnStateChange.on(state => {
+          if (state === "play") {
+            for (const m of soundModels.filter(
+              m => soundModel !== m && m.type === soundModel.type
+            ))
+              m.stop();
+
+            for (const vm of soundViewModels.filter(
+              vm => soundModel !== vm.model && vm.model.type === soundModel.type
+            ))
+              vm.selected = false;
+          }
+        });
 
         if (soundModel.type === "background")
           soundModel.OnStateChange.on(state => {
-            if (state === "play") backgroundViewModel.changeModel(soundModel);
+            if (state === "play") {
+              backgroundViewModel.changeModel(soundModel);
+              soundViewModel.selected = true;
+            }
           });
 
         if (soundModel.type === "effect")
           soundModel.OnStateChange.on(state => {
-            if (state === "play") effectViewModel.changeModel(soundModel);
+            if (state === "play") {
+              effectViewModel.changeModel(soundModel);
+              soundViewModel.selected = true;
+            }
           });
-
-        new SoundViewModel($thingsContent, t.emoji, soundModel);
       }
     }
   }
@@ -159,6 +178,7 @@ function random(min: number, max: number) {
 class CurrentSoundViewModel {
   private $stop: JQuery<HTMLElement>;
   private $play: JQuery<HTMLElement>;
+  private $sound: JQuery<HTMLElement>;
   private model: SoundModel;
 
   public changeModel(value: SoundModel) {
@@ -166,6 +186,13 @@ class CurrentSoundViewModel {
     this.model = value;
     this.model.OnStateChange.on(this.modelStateChangeHandler);
     this.updateState();
+
+    this.$sound.html("");
+    $(`
+    <span>
+      <em data-emoji=":${this.model.emoji}:" class="medium"></em><br>
+      ${this.model.thing.name}: ${this.model.name} 
+    </span>`).appendTo(this.$sound);
   }
 
   private modelStateChangeHandler = () => {
@@ -187,12 +214,12 @@ class CurrentSoundViewModel {
 
   constructor(selector: string) {
     const $element = $(selector);
-    const $sound = $(`
+    this.$sound = $(`
     <span></span>
   `).appendTo($element);
 
-    this.$stop = $(`<i class="hidden stop icon"></i>`).appendTo($sound);
-    this.$play = $(`<i class="hidden play icon"></i>`).appendTo($sound);
+    this.$stop = $(`<i class="hidden play icon"></i>`).appendTo($element);
+    this.$play = $(`<i class="hidden stop icon"></i>`).appendTo($element);
 
     $element.on("click", () => {
       this.model.toggle();
@@ -204,33 +231,44 @@ class CurrentSoundViewModel {
 class SoundViewModel {
   private $stop: JQuery<HTMLElement>;
   private $play: JQuery<HTMLElement>;
+  private _selected: boolean;
+  public get selected(): boolean {
+    return this._selected;
+  }
+  public set selected(value: boolean) {
+    this._selected = value;
+    if (!this._selected) {
+      this.$play.addClass("hidden");
+      this.$stop.addClass("hidden");
+    }
+  }
 
-  constructor($parent: JQuery<HTMLElement>, emoji: string, model: SoundModel) {
+  constructor($parent: JQuery<HTMLElement>, public readonly model: SoundModel) {
     const $sound = $(`
     <div class="ui basic button">
-      <em data-emoji=":${emoji}:" class="medium"></em><br />
+      <em data-emoji=":${model.emoji}:" class="medium"></em><br />
       ${model.name}
       ${
         model.type === "background"
           ? `
-      <a class="ui right corner label">
+      <span class="ui right corner label">
           <i class="sync icon"></i>
-      </a>`
+      </span>`
           : ``
       }
     </div>
   `).appendTo($parent);
 
     this.$stop = $(`
-<a class="hidden bottom floating ui red label">
+<span class="hidden bottom floating ui red label">
   <i class="stop icon"></i>
-</a>
+</span>
 `).appendTo($sound);
 
     this.$play = $(`
-<a class="hidden bottom floating ui teal label">
+<span class="hidden bottom floating ui teal label">
   <i class="play icon"></i>
-</a>
+</span>
 `).appendTo($sound);
 
     $sound.on("click", () => {
@@ -255,18 +293,14 @@ class SoundViewModel {
   }
 }
 
-// class BoomboxModel {
-//   public background: BackgroundSound;
-//   public effect: EffectSource;
-//   public sounds: SoundModel[];
-// }
-
 class SoundModel {
-  public thing: Thing;
+  public thing: ThingModel;
   public name: string;
+  public emoji: string;
   public type: string;
 
   private readonly onStateChange = new LiteEvent<"play" | "stop">();
+
   public get OnStateChange() {
     return this.onStateChange.expose();
   }
@@ -277,8 +311,10 @@ class SoundModel {
   }
   private files: ({ howl: Howl } & FileEntity)[] = [];
 
-  constructor(soundEntity: SoundEntity) {
+  constructor(thingEnitity: ThingEntity, soundEntity: SoundEntity) {
+    this.thing = { ...thingEnitity };
     this.name = soundEntity.name;
+    this.emoji = soundEntity.emoji;
     this.type = soundEntity.type;
     for (const fileEntity of soundEntity.files) {
       const file = {
