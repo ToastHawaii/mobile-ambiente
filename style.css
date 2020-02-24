@@ -1,3 +1,11 @@
 .main.container {
   margin-top: 7em;
 }
+
+.button {
+  position: relative;
+}
+
+.button .label .icon {
+  margin: 0;
+}

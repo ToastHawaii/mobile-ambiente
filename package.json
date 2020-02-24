@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/ToastHawaii/mobile-ambiente#readme",
   "dependencies": {
+    "@types/howler": "2.1.2",
+    "@types/jquery": "^3.3.33",
+    "@types/semantic-ui": "^2.2.7",
     "fomantic-ui": "2.8.3",
     "howler": "2.1.3"
   },
