@@ -1767,3 +1767,11 @@ let forest = [
     random: 450
   }
 ];
+declare var $: any;
+$(".menu .item").tab();
+
+$(".ui.slider").slider({
+  min: 0,
+  max: 100,
+  step: 1
+});
