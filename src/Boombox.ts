@@ -1,6 +1,6 @@
-import { forest } from "./data/place/forest";
 import { Howl } from "howler";
-import { city } from "./data/place/city";
+import { place } from "./data/place";
+import { animal } from "./data/animal";
 
 class LiteEvent<T> {
   private handlers: { (data: T): void }[] = [];
@@ -91,10 +91,7 @@ export interface CategorieEntity {
   things: ThingEntity[];
 }
 
-export const categories: CategorieEntity[] = [
-  { name: "Ort", things: [forest, city] },
-  { name: "Tier", things: [] }
-];
+export const categories: CategorieEntity[] = [place, animal];
 
 export function init(selector: string, categories: CategorieEntity[]) {
   const $main = $(selector);
@@ -337,6 +334,7 @@ class SoundModel {
               if (this.state === "stop") return;
 
               if (fileEntity.pan === "random") file.howl.stereo(random(-1, 1));
+
               file.howl.play();
             }, fileEntity.random * 1000);
           }
@@ -365,8 +363,11 @@ class SoundModel {
     this._state = "play";
     this.onStateChange.trigger(this.state);
     for (const file of this.files) {
-      if (!file.random) file.howl.play();
-      else {
+      if (!file.random) {
+        file.howl.play();
+        if (this.type === "background")
+          file.howl.fade(0, file.volume || 1, 2000);
+      } else {
         setTimeout(() => {
           if (this.state === "stop") return;
 
@@ -381,7 +382,13 @@ class SoundModel {
     this._state = "stop";
     this.onStateChange.trigger(this.state);
     for (const file of this.files) {
-      file.howl.stop();
+      if (this.type === "background") {
+        file.howl.fade(file.volume || 1, 0, 2000);
+        setTimeout(() => {
+          if (this.state === "play") return;
+          file.howl.stop();
+        }, 2000);
+      } else file.howl.stop();
     }
   }
 }
