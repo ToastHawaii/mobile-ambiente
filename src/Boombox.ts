@@ -102,30 +102,9 @@ export function init(selector: string, categories: CategorieEntity[]) {
         `).appendTo($content);
 
       for (const s of t.sounds) {
-        const $sound = $(`
-          <div class="ui basic button">
-            <em data-emoji=":${t.emoji}:" class="medium"></em><br />
-            ${s.name}
-            ${
-              s.type === "background"
-                ? `
-            <a class="ui right corner label">
-                <i class="sync icon"></i>
-            </a>`
-                : ``
-            }
-            <a class="hidden bottom floating ui red label">
-              <i class="stop icon"></i>
-            </a>
-            <a class="hidden bottom floating ui teal label">
-              <i class="play icon"></i>
-            </a>
-          </div>
-        `).appendTo($thingsContent);
         const soundModel = new SoundModel(s);
-        $sound.on("click", () => {
-          soundModel.toggle();
-        });
+
+        new SoundViewModel($thingsContent, t.emoji, soundModel);
       }
     }
   }
@@ -137,14 +116,65 @@ function random(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-class SoundModel implements Sound {
+class SoundViewModel {
+  constructor($parent: JQuery<HTMLElement>, emoji: string, model: SoundModel) {
+    const $sound = $(`
+    <div class="ui basic button">
+      <em data-emoji=":${emoji}:" class="medium"></em><br />
+      ${model.name}
+      ${
+        model.type === "background"
+          ? `
+      <a class="ui right corner label">
+          <i class="sync icon"></i>
+      </a>`
+          : ``
+      }
+    </div>
+  `).appendTo($parent);
+
+    const $stop = $(`
+<a class="hidden bottom floating ui red label">
+  <i class="stop icon"></i>
+</a>
+`).appendTo($sound);
+
+    const $play = $(`
+<a class="hidden bottom floating ui teal label">
+  <i class="play icon"></i>
+</a>
+`).appendTo($sound);
+
+    $sound.on("click", () => {
+      model.toggle();
+      switch (model.state) {
+        case "play":
+          $play.removeClass("hidden");
+          $stop.addClass("hidden");
+          break;
+        case "stop":
+          $play.addClass("hidden");
+          $stop.removeClass("hidden");
+          break;
+      }
+    });
+  }
+}
+
+class SoundModel {
   public thing: Thing;
   public name: string;
-  public selected: true;
-  public state: "play" | "stop";
+  public type: string;
+
+  private _state: "play" | "stop";
+  public get state(): "play" | "stop" {
+    return this._state;
+  }
   private files: ({ howl: Howl } & FileEntity)[] = [];
 
   constructor(soundEntity: SoundEntity) {
+    this.name = soundEntity.name;
+    this.type = soundEntity.type;
     for (const fileEntity of soundEntity.files) {
       const file = {
         howl: new Howl({
@@ -183,7 +213,7 @@ class SoundModel implements Sound {
   }
 
   public play() {
-    this.state = "play";
+    this._state = "play";
     for (const file of this.files) {
       if (!file.random) file.howl.play();
       else {
@@ -198,7 +228,7 @@ class SoundModel implements Sound {
   }
 
   public stop() {
-    this.state = "stop";
+    this._state = "stop";
     for (const file of this.files) {
       file.howl.stop();
     }
