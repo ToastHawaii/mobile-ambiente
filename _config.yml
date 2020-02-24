@@ -4,7 +4,7 @@ defaults:
     values:
       permalink: ""
       lang: "en"
-      title: "Priceless"
+      title: "ambiente"
       description: "Experience the world. Free of charge."
   - scope:
       path: "de/README.md"
