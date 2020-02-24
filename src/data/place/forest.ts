@@ -8,6 +8,11 @@ export const forest: ThingEntity = {
       name: "Normal",
       files: [{ path: "forest/distant-forest-ambience.mp3" }],
       type: "background"
+    },
+    {
+      name: "Krähe",
+      files: [{ path: "forest/crow-three-times.mp3" }],
+      type: "effect"
     }
   ]
 };

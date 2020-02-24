@@ -9,3 +9,7 @@
 .button .label .icon {
   margin: 0;
 }
+
+.hidden {
+  display: none !important;
+}
