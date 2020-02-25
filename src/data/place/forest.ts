@@ -13,7 +13,7 @@ export const forest: ThingEntity = {
     {
       name: "Krähe",
       emoji: "deciduous_tree",
-      files: [{ path: "forest/crow-three-times.mp3" }],
+      files: [{ path: "forest/crow.mp3" }],
       type: "effect"
     }
   ]

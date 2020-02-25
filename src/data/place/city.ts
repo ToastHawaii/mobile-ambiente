@@ -13,7 +13,7 @@ export const city: ThingEntity = {
     {
       name: "Hupe",
       emoji: "red_car",
-      files: [{ path: "city/car-horn-2.mp3" }],
+      files: [{ path: "city/car-horn.mp3" }],
       type: "effect"
     }
   ]

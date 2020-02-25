@@ -1,6 +1,6 @@
 import { Howl } from "howler";
 import { place } from "./data/place";
-import { animal } from "./data/animal";
+import { nature } from "./data/nature";
 
 class LiteEvent<T> {
   private handlers: { (data: T): void }[] = [];
@@ -91,7 +91,7 @@ export interface CategorieEntity {
   things: ThingEntity[];
 }
 
-export const categories: CategorieEntity[] = [place, animal];
+export const categories: CategorieEntity[] = [place, nature];
 
 export function init(selector: string, categories: CategorieEntity[]) {
   const $main = $(selector);
@@ -316,7 +316,7 @@ class SoundModel {
     for (const fileEntity of soundEntity.files) {
       const file = {
         howl: new Howl({
-          src: ["https://media.zottelig.ch/clown/audio/" + fileEntity.path],
+          src: ["https://media.zottelig.ch/ambiente/audio/" + fileEntity.path],
           preload: false,
           html5: true,
           volume: fileEntity.volume,
