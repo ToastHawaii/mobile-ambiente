@@ -1,6 +1,7 @@
 import { Howl } from "howler";
 import { place } from "./data/place";
 import { nature } from "./data/nature";
+import { vehicle } from "./data/vehicle";
 
 class LiteEvent<T> {
   private handlers: { (data: T): void }[] = [];
@@ -91,7 +92,7 @@ export interface CategorieEntity {
   things: ThingEntity[];
 }
 
-export const categories: CategorieEntity[] = [place, nature];
+export const categories: CategorieEntity[] = [place, nature, vehicle];
 
 export function init(selector: string, categories: CategorieEntity[]) {
   const $main = $(selector);
@@ -327,6 +328,9 @@ class SoundModel {
         ...fileEntity
       };
 
+      file.howl.on("load", (_a:any,_b:any,_c:any,_d:any) => {
+        debugger;
+      });
       file.howl.on("end", () => {
         if (soundEntity.type === "background") {
           if (fileEntity.random) {

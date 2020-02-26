@@ -30,6 +30,6 @@
     "noEmit": true
   },
   "include": [
-    "./**/*"
+    "./**/*", "data/.ts"
   ]
 }

@@ -9,12 +9,6 @@ export const city: ThingEntity = {
       emoji: "cityscape",
       files: [{ path: "city/residential-traffic.mp3" }],
       type: "background"
-    },
-    {
-      name: "Hupe",
-      emoji: "red_car",
-      files: [{ path: "city/car-horn.mp3" }],
-      type: "effect"
     }
   ]
 };
