@@ -4,7 +4,7 @@ $(document).ready(() => {
   init(".main", categories);
 });
 
-const jsmediatags = require("jsmediatags");
+import * as jsmediatags from "jsmediatags";
 
 jsmediatags.read("https://media.zottelig.ch/ambiente/audio/car/car-horn.mp3", {
   onSuccess: function(tag: any) {
