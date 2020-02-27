@@ -1,19 +1,17 @@
-.main.container {
-  margin-top: 7em;
-}
-
-.button {
-  position: relative;
-}
-
-.button .label .icon {
-  margin: 0;
+body {
+  padding-top: 3em;
 }
 
 .hidden {
   display: none !important;
 }
 
-.button + .button {
-  margin-left: 1em;
+.ui.basic.button {
+  position: relative;
+  margin-right: 1.25em;
+  margin-bottom: 1em;
+}
+
+.ui.basic.button .label .icon {
+  margin: 0;
 }

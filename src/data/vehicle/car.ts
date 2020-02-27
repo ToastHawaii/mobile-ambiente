@@ -5,6 +5,12 @@ export const car: ThingEntity = {
   emoji: "red_car",
   sounds: [
     {
+      name: "Motor",
+      emoji: "red_car",
+      files: [{ path: "car/engine.mp3" }],
+      type: "background"
+    },
+    {
       name: "Hupe",
       emoji: "red_car",
       files: [{ path: "car/car-horn.mp3" }],
