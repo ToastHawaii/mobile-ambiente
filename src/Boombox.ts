@@ -4,6 +4,7 @@ import { nature } from "./data/nature";
 import { vehicle } from "./data/vehicle";
 import { animal } from "./data/animal";
 import { device } from "./data/device";
+import * as jsmediatags from "jsmediatags";
 
 class LiteEvent<T> {
   private handlers: { (data: T): void }[] = [];
@@ -322,6 +323,9 @@ class SoundModel {
     this.name = soundEntity.name;
     this.emoji = soundEntity.emoji;
     this.type = soundEntity.type;
+
+    const $files = $(".files");
+
     for (const fileEntity of soundEntity.files) {
       const file = {
         howl: new Howl({
@@ -336,8 +340,29 @@ class SoundModel {
         ...fileEntity
       };
 
-      file.howl.on("load", (_a: any, _b: any, _c: any, _d: any) => {
-        debugger;
+      file.howl.on("load", () => {
+        jsmediatags.read(
+          "https://media.zottelig.ch/ambiente/audio/" + fileEntity.path,
+          {
+            onSuccess: tag => {
+              const title = tag.tags.title;
+              const artist = tag.tags.artist;
+              const source = getUserTag(tag, "Source");
+              const license = getUserTag(tag, "License");
+
+              $(
+                `<li>${this.thing.name} - ${this.name}: ${title}${
+                  artist ? ` erstellt von ${artist}` : ``
+                }${source ? ` kopiert von ${source}` : ``}${
+                  license ? ` lizensiert unter ${license}` : ``
+                }</li>`
+              ).appendTo($files);
+            },
+            onError: error => {
+              console.log(":(", error.type, error.info);
+            }
+          }
+        );
       });
       file.howl.on("end", () => {
         if (soundEntity.type === "background") {
@@ -403,4 +428,23 @@ class SoundModel {
       } else file.howl.stop();
     }
   }
+}
+
+function getUserTag(tag: any, name: string) {
+  if (!tag.tags.TXXX) return undefined;
+
+  let userTag: any;
+  if (!tag.tags.TXXX.filter) {
+    if (
+      tag.tags.TXXX.data.user_description.toUpperCase() === name.toUpperCase()
+    )
+      userTag = tag.tags.TXXX;
+    else return undefined;
+  } else {
+    userTag = tag.tags.TXXX.filter(
+      (t: any) => t.data.user_description.toUpperCase() === name.toUpperCase()
+    )[0];
+  }
+
+  return userTag && userTag.data && userTag.data.data;
 }
