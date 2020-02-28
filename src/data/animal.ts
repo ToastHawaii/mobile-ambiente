@@ -1,4 +1,4 @@
-import { CategorieEntity } from "../Boombox";
+import { CategorieEntity } from "../Entities";
 import { horse } from "./animal/horse";
 import { cow } from "./animal/cow";
 import { dog } from "./animal/dog";

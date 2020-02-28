@@ -1,15 +1,9 @@
-import { ThingEntity } from "../../Boombox";
+import { ThingEntity } from "../../Entities";
 
 export const weather: ThingEntity = {
   name: "Wetter",
   emoji: "partly_sunny",
   sounds: [
-    // {
-    //   name: "Regen",
-    //   emoji: "cloud_rain",
-    //   files: [{ path: "weather/distant-forest-ambience.mp3" }],
-    //   type: "background"
-    // },
     {
       name: "Blitz",
       emoji: "zap",

@@ -1,4 +1,4 @@
-import { ThingEntity } from "../../Boombox";
+import { ThingEntity } from "../../Entities";
 
 export const door: ThingEntity = {
   name: "Tür",

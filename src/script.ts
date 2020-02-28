@@ -1,4 +1,5 @@
-import { categories, BoomboxViewModel } from "./Boombox";
+import {  BoomboxViewModel } from "./ViewModels/BoomboxViewModel";
+import { categories } from "./data/categories";
 
 $(document).ready(() => {
   new BoomboxViewModel(".main", categories);

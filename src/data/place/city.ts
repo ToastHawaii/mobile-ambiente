@@ -1,4 +1,4 @@
-import { ThingEntity } from "../../Boombox";
+import { ThingEntity } from "../../Entities";
 import { dog } from "../animal/dog";
 import { weather } from "../nature/weather";
 import { car } from "../vehicle/car";
