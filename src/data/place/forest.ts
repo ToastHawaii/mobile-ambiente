@@ -1,4 +1,7 @@
 import { ThingEntity } from "../../Boombox";
+import { bird } from "../animal/bird";
+import { weather } from "../nature/weather";
+import { dog } from "../animal/dog";
 
 export const forest: ThingEntity = {
   name: "Wald",
@@ -10,5 +13,6 @@ export const forest: ThingEntity = {
       files: [{ path: "forest/distant-forest-ambience.mp3" }],
       type: "background"
     }
-  ]
+  ],
+  things: [bird, dog, weather]
 };

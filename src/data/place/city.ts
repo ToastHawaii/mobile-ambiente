@@ -1,4 +1,7 @@
 import { ThingEntity } from "../../Boombox";
+import { dog } from "../animal/dog";
+import { weather } from "../nature/weather";
+import { car } from "../vehicle/car";
 
 export const city: ThingEntity = {
   name: "Stadt",
@@ -10,5 +13,6 @@ export const city: ThingEntity = {
       files: [{ path: "city/residential-traffic.mp3" }],
       type: "background"
     }
-  ]
+  ],
+  things: [car, dog, weather]
 };

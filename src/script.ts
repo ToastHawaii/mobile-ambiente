@@ -1,7 +1,7 @@
-import { init, categories } from "./Boombox";
+import { categories, BoomboxViewModel } from "./Boombox";
 
 $(document).ready(() => {
-  init(".main", categories);
+  new BoomboxViewModel(".main", categories);
 });
 
 $(".info").on("click", () => {

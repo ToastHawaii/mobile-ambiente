@@ -1,4 +1,7 @@
 import { ThingEntity } from "../../Boombox";
+import { weather } from "../nature/weather";
+import { bird } from "../animal/bird";
+import { dog } from "../animal/dog";
 
 export const stream: ThingEntity = {
   name: "Fluss",
@@ -10,5 +13,6 @@ export const stream: ThingEntity = {
       files: [{ path: "stream/cave-waterfall.mp3" }],
       type: "background"
     }
-  ]
+  ],
+  things: [bird, dog, weather]
 };
