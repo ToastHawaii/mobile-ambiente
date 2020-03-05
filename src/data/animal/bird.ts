@@ -5,6 +5,12 @@ export const bird: ThingEntity = {
   emoji: "bird",
   sounds: [
     {
+      name: "Huhn",
+      emoji: "chicken",
+      files: [{ path: "bird/ChickenLayingAnEgg_01.mp3" }],
+      type: "effect"
+    },
+    {
       name: "Ente",
       emoji: "duck",
       files: [{ path: "bird/20130403-duck-04.mp3" }],
