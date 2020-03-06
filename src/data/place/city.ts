@@ -2,6 +2,7 @@ import { ThingEntity } from "../../Entities";
 import { dog } from "../animal/dog";
 import { weather } from "../nature/weather";
 import { car } from "../vehicle/car";
+import { cat } from "../animal/cat";
 
 export const city: ThingEntity = {
   name: "Stadt",
@@ -14,5 +15,5 @@ export const city: ThingEntity = {
       type: "background"
     }
   ],
-  things: [car, dog, weather]
+  things: [car, cat, dog, weather]
 };

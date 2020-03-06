@@ -1,6 +1,6 @@
 import { ThingEntity } from "../../Entities";
 
-export const dog: ThingEntity = {
+export const cat: ThingEntity = {
   name: "Katze",
   emoji: "cat2",
   sounds: [

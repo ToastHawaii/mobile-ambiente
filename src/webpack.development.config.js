@@ -14,6 +14,11 @@ module.exports = {
       template: "src/index.html",
       filename: "index.html"
     }),
+    new HtmlWebpackPlugin({
+      // Load a custom template
+      template: "src/inspiration.html",
+      filename: "inspiration.html"
+    }),
     new webpack.NamedModulesPlugin(),
     new CopyWebpackPlugin([{ from: "src/www" }])
   ],
