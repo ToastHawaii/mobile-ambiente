@@ -1,8 +1,11 @@
-import {  BoomboxViewModel } from "./ViewModels/BoomboxViewModel";
-import { categories } from "./data/categories";
+import { BoomboxViewModel } from "./Boombox/ViewModels/BoomboxViewModel";
+import { categories as boomboxCategories } from "./Boombox/data/categories";
+import { categories as inspirationCategories } from "./Inspiration/data/categories";
+import { InspirationViewModel } from "./Inspiration/ViewModels/InspirationViewModel";
 
 $(document).ready(() => {
-  new BoomboxViewModel(".main", categories);
+  new BoomboxViewModel(".boombox", boomboxCategories);
+  new InspirationViewModel(".inspiration", inspirationCategories);
 });
 
 $(".info").on("click", () => {

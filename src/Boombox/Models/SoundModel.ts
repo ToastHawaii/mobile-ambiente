@@ -1,5 +1,5 @@
 import { Howl } from "howler";
-import { LiteEvent } from "../LiteEvent";
+import { LiteEvent } from "../../LiteEvent";
 import * as jsmediatags from "jsmediatags";
 import { FileEntity, ThingEntity, SoundEntity } from "../Entities";
 import { ThingModel } from "./ThingModel";

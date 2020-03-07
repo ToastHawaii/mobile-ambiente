@@ -11,6 +11,8 @@ export class BoomboxViewModel {
 
   constructor(selector: string, categories: CategorieEntity[]) {
     const $main = $(selector);
+    if ($main.length === 0) return;
+
     const $menu = $(
       `<div class="ui pointing secondary stacked-when-needed large menu"></div>`
     ).appendTo($main);
