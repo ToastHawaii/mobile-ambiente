@@ -12,7 +12,7 @@ export class BoomboxViewModel {
   constructor(selector: string, categories: CategorieEntity[]) {
     const $main = $(selector);
     const $menu = $(
-      `<div class="ui pointing secondary large menu"></div>`
+      `<div class="ui pointing secondary stacked-when-needed large menu"></div>`
     ).appendTo($main);
 
     for (const c of categories) {
@@ -33,7 +33,7 @@ export class BoomboxViewModel {
     things: ThingEntity[]
   ) {
     const $thingsMenu = $(
-      `<div class="ui pointing labeled icon large menu"></div>`
+      `<div class="ui labeled icon stacked-when-needed large menu"></div>`
     ).appendTo($content);
 
     for (const t of things) {

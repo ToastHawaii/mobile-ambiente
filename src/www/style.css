@@ -3,7 +3,7 @@ body {
 }
 
 .main {
-  padding-bottom: 7em;
+  padding-bottom: 7.4em;
 }
 
 .hidden {
@@ -18,4 +18,35 @@ body {
 
 .ui.basic.button .label .icon {
   margin: 0;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .ui.stacked-when-needed.menu {
+    display: inline-block;
+    width: 100%;
+  }
+  .ui.stacked-when-needed.menu .item {
+    display: inline-flex;
+  }
+
+  .ui.stacked-when-needed.menu .item:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(34, 36, 38, 0.1);
+  }
+
+  .ui.stacked-when-needed.menu ~ .ui.tab .ui.basic.button {
+    padding: 0.7em 1.4em 0.7em;
+  }
+
+  .ui.stacked-when-needed.menu
+    ~ .ui.tab
+    .ui.basic.button
+    em[data-emoji].medium {
+    font-size: 2.2em;
+  }
 }
