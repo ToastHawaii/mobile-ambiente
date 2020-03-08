@@ -52,6 +52,16 @@ body {
 }
 
 [data-tooltip]:hover:after {
-  max-width: 120px;
+  min-width: 100%;
+  width: calc(100% + 15px);
+  text-align: center;
+
   white-space: normal;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
