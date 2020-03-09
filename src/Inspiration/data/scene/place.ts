@@ -3,6 +3,10 @@ import { TopicEntity } from "../../Entities";
 export const place: TopicEntity = {
   name: "Ort",
   emoji: "park",
+  tips: [
+    "Zeit nehmen den Raum einzurichten/zu bespielen",
+    "Bei Scene painting: Stimmung hinzufügen, von gross zu klein gehen, ein unerwartetes Detail hinzufügen"
+  ],
   inspirations: [
     {
       name: "Raum",

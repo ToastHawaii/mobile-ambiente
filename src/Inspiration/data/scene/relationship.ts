@@ -1,13 +1,19 @@
 import { TopicEntity } from "../../Entities";
+import { emotion, enjoyableEmotion } from "../shared";
 
 export const relationship: TopicEntity = {
   name: "Beziehung",
   emoji: "people_holding_hands_tone4_tone2",
+  tips: [
+    "Kann Teil des Problems sein, oder auch nur unterstützen",
+    "Sich treffen lassen/Veränderung zu lassen",
+    "Emotion kann sich auf Gegenüber beziehen, muss aber nicht"
+  ],
   inspirations: [
     {
       name: "Beziehung",
       emoji: "people_holding_hands_tone4_tone2",
-      values:[
+      values: [
         "Ehepaar",
         "Vater/Kind",
         "Mutter/Kind",
@@ -118,6 +124,8 @@ export const relationship: TopicEntity = {
         "Herr und Sklave",
         "Freunde aus der Kindheit, die sich wiedersehen"
       ]
-    }
+    },
+    emotion,
+    enjoyableEmotion
   ]
 };

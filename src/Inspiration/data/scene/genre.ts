@@ -3,6 +3,9 @@ import { TopicEntity } from "../../Entities";
 export const genre: TopicEntity = {
   name: "Genre",
   emoji: "detective_tone5",
+  tips: [
+    "Wenn mann das Genre nicht kennt: Nach drei Dinge fragen die das Genre ausmachen und das erfüllen"
+  ],
   inspirations: [
     {
       name: "Film/Serie",

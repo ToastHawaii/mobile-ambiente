@@ -4,6 +4,10 @@ import { job, hobby } from "../shared";
 export const obsession: TopicEntity = {
   name: "Zwang",
   emoji: "coffee",
+  tips: [
+    "Immer gleich wiederholen (Running Gag)",
+    "Mit verschiedenen Varianten wiederholen (Spannung: Was kommt als nächstes?)"
+  ],
   inspirations: [
     {
       name: "Tick",
@@ -50,8 +54,7 @@ export const obsession: TopicEntity = {
         "Phobophobie (Angst eine Phobie zu erleiden)"
       ]
     },
-   job,
-   hobby
+    job,
+    hobby
   ]
 };
-

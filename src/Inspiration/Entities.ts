@@ -6,6 +6,7 @@ export interface CategorieEntity {
 export interface TopicEntity {
   name: string;
   emoji: string;
+  tips: string[];
   inspirations: InspirationEntity[];
 }
 

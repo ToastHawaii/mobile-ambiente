@@ -45,6 +45,13 @@ export class InspirationViewModel {
         const topicModel = new TopicModel(s);
         new TopicViewModel($thingsContent, topicModel);
       }
+
+      const $tips = $(`<p>Tipps:</p>`).appendTo($thingsContent);
+
+      const $list = $(`<ul></ul>`).appendTo($tips);
+      for (const tip of t.tips) {
+        $(`<li>${tip}</li>`).appendTo($list);
+      }
     }
   }
 }

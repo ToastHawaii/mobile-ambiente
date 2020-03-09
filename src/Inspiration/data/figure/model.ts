@@ -3,6 +3,7 @@ import { TopicEntity } from "../../Entities";
 export const model: TopicEntity = {
   name: "Vorbild",
   emoji: "cat2",
+  tips: ["Körperhaltung", "Bewegung", "Verhalten", "Eigenschaften"],
   inspirations: [
     {
       name: "Tier",

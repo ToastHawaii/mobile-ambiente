@@ -4,6 +4,11 @@ import { job, hobby } from "../shared";
 export const activity: TopicEntity = {
   name: "Tätigkeit",
   emoji: "broom",
+  tips: [
+    "Zeit nehmen zum Ausprobieren/Auskosten",
+    "Über etwas anderes Reden als die Tätigkeit",
+    "Zwei Dimensionen: ge­schickt - ungeschickt, motiviert - unmotiviert"
+  ],
   inspirations: [
     {
       name: "Routine",
