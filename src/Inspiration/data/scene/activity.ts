@@ -39,6 +39,7 @@ export const activity: TopicEntity = {
         "Unkraut zupfen",
         "Ernten",
         "Einpflanzen",
+        "Baumschneiden",
         "Rasen mähen",
         "Blumen giessen",
         "Schwimmen",
