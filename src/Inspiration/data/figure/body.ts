@@ -4,7 +4,11 @@ import { emotion, enjoyableEmotion } from "../shared";
 export const body: TopicEntity = {
   name: "Körper",
   emoji: "person_standing",
-  tips: ["Körperhaltung", "Körperbau"],
+  tips: [
+    "Körperhaltung",
+    "Körperbau",
+    "Körperteil: Leicht, schwer, führt, ist wichtig, mit Emotion kombinieren"
+  ],
   inspirations: [
     {
       name: "Körperteil",

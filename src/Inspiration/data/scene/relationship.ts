@@ -1,5 +1,5 @@
 import { TopicEntity } from "../../Entities";
-import { emotion, enjoyableEmotion } from "../shared";
+import { emotion, enjoyableEmotion, thing, animal } from "../shared";
 
 export const relationship: TopicEntity = {
   name: "Beziehung",
@@ -126,6 +126,8 @@ export const relationship: TopicEntity = {
       ]
     },
     emotion,
-    enjoyableEmotion
+    enjoyableEmotion,
+    thing,
+    animal
   ]
 };

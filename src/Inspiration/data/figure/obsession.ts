@@ -24,7 +24,23 @@ export const obsession: TopicEntity = {
         "Schuhtick",
         "Kleptomanie (Zwang etwas stehlen zu müssen)",
         "Waschzwang",
-        "Pyromanie (Zwang, ein Feuer zu legen)"
+        "Pyromanie (Zwang, ein Feuer zu legen)",
+
+        // https://improwiki.com/de/ideen-fuer-vorgaben/liste_weiterer_ticks_von_figuren
+        "Die Figur versucht, ihren 'unsichtbaren' Freund vor den anderen zu verstecken",
+        "Ein Verkäufer, der alles verkaufen möchte, was er sieht oder anfasst",
+        "Eine Figur, die eine ganze Packung Beruhigungsmittel geschluckt hat",
+        "Die Figur ist überzeugt davon, unsichtbar zu sein (ist es aber eigentlich gar nicht)",
+        "Die Figur ist ein böses Genie, das die Weltherrschaft an sich reißen möchte",
+        "Ein Astronaut, der die anderen Figuren in der Szene für eine neu entdeckte außerirdische Lebensform hält, die er gerade entdeckt hat",
+        "Figur verhält sich wie ein hungriger Dinosaurier",
+        "Die Figur macht eine andere Figur der Szene mit einer Verzögerung von 5 Sekunden nach.",
+        "Figur verhält sich wie verschiedenste Darsteller eines Zirkus",
+        "Die Figur kann nur mit Hilfe von Gesten kommunizieren (Scharaden)",
+        "Die Figur denkt, dass alle anderen Figuren sie ständig bewerten und beurteilen",
+        
+        // Eigene
+        "Ohne Kaffee geht es nicht."
       ]
     },
     {
