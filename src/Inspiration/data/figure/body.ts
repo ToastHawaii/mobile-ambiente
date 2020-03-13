@@ -59,6 +59,30 @@ export const body: TopicEntity = {
       ]
     },
     emotion,
-    enjoyableEmotion
+    enjoyableEmotion,
+    {
+      name: "Farbe",
+      emoji: "blue_circle",
+      values: [
+        "Blau",
+        "Braun",
+        "Bronze",
+        "Gelb",
+        "Grau",
+        "Grün",
+        "Orange ",
+        "Pink",
+        "Platin",
+        "Rosa ",
+        "Rot",
+        "Schwarz",
+        "Silber",
+        "Türkis",
+        "Violett",
+        "Weiss",
+        "Beige",
+        "Gold"
+      ]
+    },
   ]
 };

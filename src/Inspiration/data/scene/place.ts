@@ -5,7 +5,8 @@ export const place: TopicEntity = {
   emoji: "park",
   tips: [
     "Zeit nehmen den Raum einzurichten/zu bespielen",
-    "Bei Scene painting: Stimmung hinzufügen, von gross zu klein gehen, ein unerwartetes Detail hinzufügen"
+    "Bei Scene painting: Stimmung hinzufügen, von gross zu klein gehen, ein unerwartetes Detail hinzufügen",
+    "Eine Figur kann eine Haltung/Emotion/Status gegenüber einem Raum haben"
   ],
   inspirations: [
     {

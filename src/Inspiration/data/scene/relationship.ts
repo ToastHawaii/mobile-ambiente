@@ -7,7 +7,8 @@ export const relationship: TopicEntity = {
   tips: [
     "Kann Teil des Problems sein, oder auch nur unterstützen",
     "Sich treffen lassen/Veränderung zu lassen",
-    "Emotion kann sich auf Gegenüber beziehen, muss aber nicht"
+    "Emotion kann sich auf Gegenüber beziehen, muss aber nicht",
+    "Eine Figur kann eine Haltung/Emotion/Status gegenüber einem Gegenstand haben"
   ],
   inspirations: [
     {
