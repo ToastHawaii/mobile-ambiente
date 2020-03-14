@@ -77,7 +77,7 @@ export const activity: TopicEntity = {
         "Getränk einschenken",
         "Trinken",
         "Geschirr spülen",
-        "mit Handtuch ausbreiten",
+        "Badetuch ausbreiten",
         "Eincremen",
         "am Fliessband arbeiten",
         "handwerklich arbeiten",
