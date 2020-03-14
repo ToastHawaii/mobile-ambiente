@@ -59,7 +59,7 @@ export const genre: TopicEntity = {
         "Tragödie",
         "Tragikomödie",
         "Vampirfilm",
-        "Western: Western, Italowestern (Spaghetti-Western), Western Komödie",
+        "Western: Western, Italowestern (Spaghetti-Western), Western Komödie",
         "Zeichentrick /Comic / Manga",
         "Arztserie",
         "Beratungssendung: Medizinische Themen",
