@@ -4,7 +4,7 @@ export const genre: TopicEntity = {
   name: "Genre",
   emoji: "detective_tone5",
   tips: [
-    "Wenn mann das Genre nicht kennt: Nach drei Dinge fragen die das Genre ausmachen und das erfüllen"
+    "Wenn mann das Genre nicht kennt: Nach drei Dinge fragen die das Genre ausmachen und diese in der Szene erfüllen"
   ],
   inspirations: [
     {
