@@ -1,5 +1,5 @@
 # Ankommen
-* 60 Sekunden Grinsen - [youtube](https://www.youtube.com/watch?v=LtPZ3gKAZs0) evtl. mit anschliesender Kiefer Entspannung (Zombie Modus/Kopf leeren) / Tag mit einem Lächeln abschliessen (Morderator leitet durch * den Tag Aufstehen-Morgen-Mittag-Abend...)
+* 60 Sekunden Grinsen - [youtube](https://www.youtube.com/watch?v=LtPZ3gKAZs0) evtl. mit anschliesender Kiefer Entspannung (Zombie Modus/Kopf leeren) / Tag mit einem Lächeln abschliessen (Morderator leitet durch den Tag Aufstehen-Morgen-Mittag-Abend...)
 * Vom Tag erzählen in Gibberisch (zweier Gruppen)
 * Bodyscan
 * Selbstmitgefühlspause
@@ -23,7 +23,7 @@
 * Drei-Satz-Geschichte/4 Satz Geschichte - [improwiki](https://improwiki.com/de/wiki/improtheater/4_satz_geschichte) (Zweier Gruppe)
 * 99 ... kommen in eine Bar
 * Der kommt flach (Flachwitze spontan erfinden)
-* Superheld und Sidekick (Sidekick warnt vor einem Problem, Superheld erzählt wie er das Problem gelöst hat, Sidekick warnt vor einem neuen Problem, welches aus der Lösung entstanden ist.) (Glücklicherweise, unglücklicherweise https://improwiki.com/de/wiki/improtheater/gluecklicherweise_ungluecklicherweise)
+* Superheld und Sidekick (Sidekick warnt vor einem Problem, Superheld erzählt wie er das Problem gelöst hat, Sidekick warnt vor einem neuen Problem, welches aus der Lösung entstanden ist.) (Glücklicherweise, unglücklicherweise - [improwiki](https://improwiki.com/de/wiki/improtheater/gluecklicherweise_ungluecklicherweise))
 * Dissoziation - [improwiki](https://improwiki.com/de/wiki/improtheater/dissoziation)
 * Wo, Wer, Was, Wieso ist das wichtig, Was ist das Problem, Lösung
 * Ja, aber - [improwiki](https://improwiki.com/de/wiki/improtheater/ja_aber)
@@ -35,9 +35,9 @@
 * Erstes Date/Urlaubsreise - [improwiki](https://improwiki.com/de/wiki/improtheater/urlaubsreise)
 * Geschichte mit Emotionen (Zwei Spieler erzählen eine fortlaufende Geschichte, beide haben eine eigene Emotion, bei einem Ton wechselt der Erzähler und fährt in seiner Emotion fort)
 * Chatroulette (Speed-Dating)
-* Kastelli & evtl. mit Sound/Ambiente Unterstützung - [ambiente](https://ambiente.zottelig.ch/), [ambiente-mixer](https://www.ambient-mixer.com/) (Hörspiel [improwiki](https://improwiki.com/de/wiki/improtheater/hoerspiel))
-* Rätselraten: Service Center (Reklamation [improwiki](https://improwiki.com/de/wiki/improtheater/reklamation)), Online Bewerbung
-* Buschtelefon (Charakter-Reigen/Figurenreigen/Domino [improwiki](https://improwiki.com/de/spiele/charakter-reigen) [improwiki](https://improwiki.com/de/spiele/domino), evtl. ohne Monolog)
+* Kastelli & evtl. mit Sound/Ambiente Unterstützung - [ambiente](https://ambiente.zottelig.ch/), [ambiente-mixer](https://www.ambient-mixer.com/) (Hörspiel - [improwiki](https://improwiki.com/de/wiki/improtheater/hoerspiel))
+* Rätselraten: Service Center (Reklamation - [improwiki](https://improwiki.com/de/wiki/improtheater/reklamation)), Online Bewerbung
+* Buschtelefon (Charakter-Reigen/Figurenreigen/Domino - [improwiki](https://improwiki.com/de/spiele/charakter-reigen), [improwiki](https://improwiki.com/de/spiele/domino), evtl. ohne Monolog)
 * Radio Mix - [improwiki](https://improwiki.com/de/wiki/improtheater/radio_mix)
 * Drei Tote - [improwiki](https://improwiki.com/de/wiki/improtheater/drei_tote)
 * Zweier-Synchro - [improwiki](https://improwiki.com/de/spiele/zweier-synchro)
