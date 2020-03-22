@@ -39,6 +39,17 @@ export const obsession: TopicEntity = {
         "Die Figur kann nur mit Hilfe von Gesten kommunizieren (Scharaden)",
         "Die Figur denkt, dass alle anderen Figuren sie ständig bewerten und beurteilen",
         
+        // https://improwiki.com/de/wiki/improtheater/fast_food_stanislawski
+        "Du willst den anderen verführen",
+        "Du bist ein Nerd",
+        "Dir gefällt es, Leute zum Lachen zu bringen",
+        "Du möchtest andere Leute beeindrucken",
+        "Du bist eine fiese Person",
+        "Du versuchst, normal zu erscheinen",
+        "Du bist ein Optimist",
+        "Du bist ein Pessimist",
+        "Du wirst niemals eine Freund*in finden",
+        
         // Eigene
         "Ohne Kaffee geht es nicht."
       ]
