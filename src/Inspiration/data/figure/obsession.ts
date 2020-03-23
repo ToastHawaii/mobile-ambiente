@@ -31,14 +31,14 @@ export const obsession: TopicEntity = {
         "Ein Verkäufer, der alles verkaufen möchte, was er sieht oder anfasst",
         "Eine Figur, die eine ganze Packung Beruhigungsmittel geschluckt hat",
         "Die Figur ist überzeugt davon, unsichtbar zu sein (ist es aber eigentlich gar nicht)",
-        "Die Figur ist ein böses Genie, das die Weltherrschaft an sich reißen möchte",
-        "Ein Astronaut, der die anderen Figuren in der Szene für eine neu entdeckte außerirdische Lebensform hält, die er gerade entdeckt hat",
+        "Die Figur ist ein böses Genie, das die Weltherrschaft an sich reissen möchte",
+        "Ein Astronaut, der die anderen Figuren in der Szene für eine neu entdeckte ausserirdische Lebensform hält, die er gerade entdeckt hat",
         "Figur verhält sich wie ein hungriger Dinosaurier",
         "Die Figur macht eine andere Figur der Szene mit einer Verzögerung von 5 Sekunden nach.",
         "Figur verhält sich wie verschiedenste Darsteller eines Zirkus",
         "Die Figur kann nur mit Hilfe von Gesten kommunizieren (Scharaden)",
         "Die Figur denkt, dass alle anderen Figuren sie ständig bewerten und beurteilen",
-        
+
         // https://improwiki.com/de/wiki/improtheater/fast_food_stanislawski
         "Du willst den anderen verführen",
         "Du bist ein Nerd",
@@ -49,7 +49,7 @@ export const obsession: TopicEntity = {
         "Du bist ein Optimist",
         "Du bist ein Pessimist",
         "Du wirst niemals eine Freund*in finden",
-        
+
         // Eigene
         "Ohne Kaffee geht es nicht."
       ]
