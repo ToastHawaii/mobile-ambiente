@@ -17,6 +17,12 @@ export const bird: ThingEntity = {
       type: "effect"
     },
     {
+      name: "Möwen",
+      emoji: "bird",
+      files: [{ path: "bird/seagulls.mp3" }],
+      type: "effect"
+    },
+    {
       name: "Krähe",
       emoji: "bird",
       files: [{ path: "bird/crow.mp3" }],
