@@ -7,7 +7,7 @@ export const hammer: ThingEntity = {
     {
       name: "Stein",
       emoji: "hammer",
-      files: [{ path: "tools/hammer.mp3" }],
+      files: [{ path: "tool/hammer.mp3" }],
       type: "effect"
     },
   ]
