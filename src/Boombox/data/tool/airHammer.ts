@@ -7,7 +7,7 @@ export const airHammer: ThingEntity = {
     {
       name: "Presslufthammer",
       emoji: "construction_worker",
-      files: [{ path: "/air-hammer.mp3" }],
+      files: [{ path: "tool/air-hammer.mp3" }],
       type: "effect"
     }
   ]
