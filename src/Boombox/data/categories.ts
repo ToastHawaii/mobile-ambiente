@@ -4,11 +4,13 @@ import { device } from "./device";
 import { nature } from "./nature";
 import { animal } from "./animal";
 import { CategorieEntity } from "../Entities";
+import { tool } from "./tool";
 
 export const categories: CategorieEntity[] = [
   place,
   vehicle,
   device,
-  nature,
-  animal
+  animal,
+  tool,
+  nature
 ];
