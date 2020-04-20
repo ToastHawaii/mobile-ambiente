@@ -10,7 +10,7 @@ export const forest: ThingEntity = {
     {
       name: "Normal",
       emoji: "deciduous_tree",
-      files: [{ path: "forest/distant-forest-ambience.mp3" }],
+      files: [{ path: "forest/bird-chorus.mp3" }],
       type: "background"
     }
   ],
