@@ -3,7 +3,7 @@ import { door } from "../device/door";
 import { phone } from "../device/phone";
 import { bell } from "../device/bell";
 
-export const forest: ThingEntity = {
+export const kitchen: ThingEntity = {
   name: "Küche",
   emoji: "man_cook_tone3",
   sounds: [
