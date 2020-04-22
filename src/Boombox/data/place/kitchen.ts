@@ -2,6 +2,9 @@ import { ThingEntity } from "../../Entities";
 import { door } from "../device/door";
 import { phone } from "../device/phone";
 import { bell } from "../device/bell";
+import { cat } from "../animal/cat";
+import { dog } from "../animal/dog";
+import { fly } from "../animal/fly";
 
 export const kitchen: ThingEntity = {
   name: "Küche",
@@ -14,5 +17,5 @@ export const kitchen: ThingEntity = {
       type: "background"
     }
   ],
-  things: [door, phone, bell]
+  things: [door, phone, bell, cat, dog, fly]
 };

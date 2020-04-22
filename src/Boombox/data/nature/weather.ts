@@ -5,6 +5,12 @@ export const weather: ThingEntity = {
   emoji: "partly_sunny",
   sounds: [
     {
+      name: "Wind",
+      emoji: "dash",
+      files: [{ path: "weather/mountain-wind.mp3" }],
+      type: "background"
+    },
+    {
       name: "Regen",
       emoji: "cloud_rain",
       files: [{ path: "weather/rain.mp3" }],
