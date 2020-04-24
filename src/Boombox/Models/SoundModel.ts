@@ -41,7 +41,7 @@ export class SoundModel {
         howl: new Howl({
           src: ["https://media.zottelig.ch/ambiente/audio/" + fileEntity.path],
           preload: false,
-          html5: true,
+          html5: false,
           volume: this._volume * (fileEntity.volume || 1.0),
           loop: soundEntity.type === "background" && !fileEntity.random,
           stereo:
