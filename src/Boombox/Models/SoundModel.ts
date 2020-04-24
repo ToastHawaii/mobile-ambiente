@@ -24,11 +24,12 @@ export class SoundModel {
   public set volume(value: number) {
     this._volume = value;
     for (const file of this.files) {
-      file.howl.volume(this._volume * (file.volume || 1.0) * 0.0);
+      file.howl.volume(this._volume * (file.volume || 1.0));
     }
   }
   private files: ({
     howl: Howl;
+    loop: boolean;
   } & FileEntity)[] = [];
   constructor(thingEnitity: ThingEntity, soundEntity: SoundEntity) {
     this.thing = { ...thingEnitity };
@@ -42,11 +43,11 @@ export class SoundModel {
           src: ["https://media.zottelig.ch/ambiente/audio/" + fileEntity.path],
           preload: false,
           html5: true,
-          volume: this._volume * (fileEntity.volume || 1.0) * 0.0,
-          loop: soundEntity.type === "background" && !fileEntity.random,
+          volume: this._volume * (fileEntity.volume || 1.0),
           stereo:
             typeof fileEntity.pan === "number" ? fileEntity.pan : undefined
         } as any),
+        loop: soundEntity.type === "background" && !fileEntity.random,
         ...fileEntity
       };
       file.howl.on("load", () => {
@@ -100,14 +101,40 @@ export class SoundModel {
       this.play();
     }
   }
+  private loopFile(
+    file: {
+      howl: Howl;
+      loop: boolean;
+    } & FileEntity
+  ) {
+    file.howl.on("play", () => {
+      const duration = (file.howl as any)._sounds[0]._node.duration;
+      setTimeout(() => {
+        if (this.state === "stop") return;
+
+        file.howl = new Howl({
+          src: ["https://media.zottelig.ch/ambiente/audio/" + file.path],
+          preload: false,
+          html5: true,
+          volume: this._volume * (file.volume || 1.0),
+          stereo: typeof file.pan === "number" ? file.pan : undefined
+        } as any);
+        file.howl.play();
+        this.loopFile(file);
+      }, duration * 1000 - 50);
+    });
+  }
+
   public play() {
     this._state = "play";
     this.onStateChange.trigger(this.state);
     for (const file of this.files) {
       if (!file.random) {
         file.howl.play();
+        if (file.loop) this.loopFile(file);
+
         if (this.type === "background")
-          file.howl.fade(0.0, this._volume * (file.volume || 1.0) * 0.0, 2000);
+          file.howl.fade(0.0, this._volume * (file.volume || 1.0), 2000);
       } else {
         setTimeout(() => {
           if (this.state === "stop") return;
@@ -122,7 +149,7 @@ export class SoundModel {
     this.onStateChange.trigger(this.state);
     for (const file of this.files) {
       if (this.type === "background") {
-        file.howl.fade(this._volume * (file.volume || 1.0) * 0.0, 0.0, 2000);
+        file.howl.fade(this._volume * (file.volume || 1.0), 0.0, 2000);
         setTimeout(() => {
           if (this.state === "play") return;
           file.howl.stop();
