@@ -74,17 +74,28 @@
       </div>
     </div>
 
-    <div class="ui bottom fixed labeled icon large menu">
+    <div class="ui bottom fixed labeled icon medium menu">
       <div class="ui container">
-        <a class="item background">
+        <a class="background control item">
           <span class="ui right corner label"><i class="sync icon"></i></span>
         </a>
+        <a class="background audio item">
+          <i class="volume up icon"></i>
+        </a>
+        <div class="ui background audio popup top center transition hidden">
+          <div class="ui reversed vertical labeled ticked slider"></div>
+        </div>
         <div class="right menu">
-          <a class="item info">
+          <a class="item info" >
             <i class="info icon"></i>
           </a>
-
-          <a class="item effect"></a>
+          <a class="effect control item"></a>
+          <div class="ui effect audio popup top center transition hidden">
+            <div class="ui reversed vertical labeled ticked slider"></div>
+          </div>
+          <a class="effect audio item" >
+            <i class="volume up icon"></i>
+          </a>
         </div>
       </div>
     </div>

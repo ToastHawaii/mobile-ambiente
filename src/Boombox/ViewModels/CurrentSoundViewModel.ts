@@ -4,10 +4,11 @@ export class CurrentSoundViewModel {
   private $play: JQuery<HTMLElement>;
   private $sound: JQuery<HTMLElement>;
   private model: SoundModel;
+  private volume: number = 0.5;
   public changeModel(value: SoundModel) {
-    if (this.model)
-      this.model.OnStateChange.off(this.modelStateChangeHandler);
+    if (this.model) this.model.OnStateChange.off(this.modelStateChangeHandler);
     this.model = value;
+    this.model.volume = this.volume;
     this.model.OnStateChange.on(this.modelStateChangeHandler);
     this.updateState();
     this.$sound.html("");
@@ -33,10 +34,36 @@ export class CurrentSoundViewModel {
     }
   }
   constructor(selector: string) {
-    const $element = $(selector);
-    this.$sound = $(`
-    <span></span>
-  `).appendTo($element);
+    const popupTarget = $(selector + ".audio.item");
+    const popup = $(selector + ".audio.popup");
+
+    popupTarget.popup({
+      popup: popup,
+      position: "top center",
+      on: "manual"
+    });
+    popupTarget.on("click", () => {
+      if (popup.hasClass("hidden")) {
+        popupTarget.popup("show");
+        (popup.children(".ui.slider") as any).slider({
+          min: 0,
+          max: 100,
+          step: 5,
+          start: this.volume * 100,
+          onMove: () => {
+            this.volume =
+              (popup.children(".ui.slider") as any).slider("get value") / 100;
+            this.model.volume = this.volume;
+          }
+        });
+        popupTarget.popup("show");
+      } else {
+        popupTarget.popup("hide");
+      }
+    });
+
+    const $element = $(selector + ".control");
+    this.$sound = $(`<span></span>`).appendTo($element);
     this.$stop = $(`<i class="hidden play icon"></i>`).appendTo($element);
     this.$play = $(`<i class="hidden stop icon"></i>`).appendTo($element);
     $element.on("click", () => {

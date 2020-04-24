@@ -17,6 +17,16 @@ export class SoundModel {
   public get state(): "play" | "stop" {
     return this._state;
   }
+  private _volume: number = 1.0;
+  public get volume(): number {
+    return this._volume;
+  }
+  public set volume(value: number) {
+    this._volume = value;
+    for (const file of this.files) {
+      file.howl.volume(this._volume * (file.volume || 1.0));
+    }
+  }
   private files: ({
     howl: Howl;
   } & FileEntity)[] = [];
@@ -32,7 +42,7 @@ export class SoundModel {
           src: ["https://media.zottelig.ch/ambiente/audio/" + fileEntity.path],
           preload: false,
           html5: true,
-          volume: fileEntity.volume,
+          volume: this._volume * (fileEntity.volume || 1.0),
           loop: soundEntity.type === "background" && !fileEntity.random,
           stereo:
             typeof fileEntity.pan === "number" ? fileEntity.pan : undefined
@@ -68,7 +78,7 @@ export class SoundModel {
             setTimeout(() => {
               if (this.state === "stop") return;
               if (fileEntity.pan === "random")
-                file.howl.stereo(this.random(-1, 1));
+                file.howl.stereo(this.random(-1.0, 1.0));
               file.howl.play();
             }, fileEntity.random * 1000);
           }
@@ -97,11 +107,11 @@ export class SoundModel {
       if (!file.random) {
         file.howl.play();
         if (this.type === "background")
-          file.howl.fade(0, file.volume || 1, 2000);
+          file.howl.fade(0.0, this._volume * (file.volume || 1.0), 2000);
       } else {
         setTimeout(() => {
           if (this.state === "stop") return;
-          if (file.pan === "random") file.howl.stereo(this.random(-1, 1));
+          if (file.pan === "random") file.howl.stereo(this.random(-1.0, 1.0));
           file.howl.play();
         }, file.random * 1000);
       }
@@ -112,7 +122,7 @@ export class SoundModel {
     this.onStateChange.trigger(this.state);
     for (const file of this.files) {
       if (this.type === "background") {
-        file.howl.fade(file.volume || 1, 0, 2000);
+        file.howl.fade(this._volume * (file.volume || 1.0), 0.0, 2000);
         setTimeout(() => {
           if (this.state === "play") return;
           file.howl.stop();
