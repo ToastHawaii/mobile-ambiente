@@ -74,7 +74,6 @@ body {
   height: 200px;
 }
 
-.audio.item,
-.info.item {
+.audio.item {
   min-width: auto !important;
 }
