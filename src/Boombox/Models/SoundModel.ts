@@ -5,10 +5,10 @@ import { FileEntity, ThingEntity, SoundEntity } from "../Entities";
 import { ThingModel } from "./ThingModel";
 
 export class SoundModel {
-  public thing: ThingModel;
-  public name: string;
-  public emoji: string;
-  public type: string;
+  public readonly thing: ThingModel;
+  public readonly name: string;
+  public readonly emoji: string;
+  public readonly type: string;
   private readonly onStateChange = new LiteEvent<"play" | "stop">();
   public get OnStateChange() {
     return this.onStateChange.expose();
@@ -24,72 +24,24 @@ export class SoundModel {
   public set volume(value: number) {
     this._volume = value;
     for (const file of this.files) {
-      file.howl.volume(this._volume * (file.volume || 1.0));
+      if (file.howl) file.howl.volume(this._volume * (file.volume || 1.0));
     }
   }
   private files: ({
     howl: Howl;
-    loop: boolean;
   } & FileEntity)[] = [];
   constructor(thingEnitity: ThingEntity, soundEntity: SoundEntity) {
     this.thing = { ...thingEnitity };
     this.name = soundEntity.name;
     this.emoji = soundEntity.emoji;
     this.type = soundEntity.type;
-    const $files = $(".files");
+
     for (const fileEntity of soundEntity.files) {
-      debugger;
       const file = {
-        howl: new Howl({
-          src: ["https://media.zottelig.ch/ambiente/audio/" + fileEntity.path],
-          volume: this._volume * (fileEntity.volume || 1.0),
-          stereo:
-            typeof fileEntity.pan === "number" ? fileEntity.pan : undefined
-        } as any),
-        loop: soundEntity.type === "background" && !fileEntity.random,
+        howl: undefined as any,
         ...fileEntity
       };
-      file.howl.on("load", () => {
-        jsmediatags.read(
-          "https://media.zottelig.ch/ambiente/audio/" + fileEntity.path,
-          {
-            onSuccess: tag => {
-              const title = tag.tags.title;
-              const artist = tag.tags.artist;
-              const source = this.getUserTag(tag, "Source");
-              const license = this.getUserTag(tag, "License");
-              $(
-                `<li>${this.thing.name} - ${this.name}: ${title}${
-                  artist ? ` erstellt von ${artist}` : ``
-                }${source ? ` kopiert von ${source}` : ``}${
-                  license ? ` lizensiert unter ${license}` : ``
-                }</li>`
-              ).appendTo($files);
-            },
-            onError: error => {
-              console.log(":(", error.type, error.info);
-            }
-          }
-        );
-      });
-      file.howl.on("end", () => {
-        if (soundEntity.type === "background") {
-          if (fileEntity.random) {
-            setTimeout(() => {
-              if (this.state === "stop") return;
-              if (fileEntity.pan === "random")
-                file.howl.stereo(this.random(-1.0, 1.0));
-              file.howl.play();
-            }, fileEntity.random * 1000);
-          }
-        } else if (soundEntity.type === "effect") {
-          for (const f of this.files) {
-            if (f.howl.playing()) return;
-          }
-          this._state = "stop";
-          this.onStateChange.trigger(this.state);
-        }
-      });
+
       this.files.push(file);
     }
   }
@@ -103,21 +55,15 @@ export class SoundModel {
   private loopFile(
     file: {
       howl: Howl;
-      loop: boolean;
     } & FileEntity
   ) {
     file.howl.on("play", () => {
-      const duration = (file.howl as any)._sounds[0]._node.duration;
+      const duration = file.howl.duration();
       setTimeout(() => {
         if (this.state === "stop") return;
         if (file.fade)
           file.howl.fade(this._volume * (file.volume || 1.0), 0, file.fade);
-        file.howl = new Howl({
-          src: ["https://media.zottelig.ch/ambiente/audio/" + file.path],
-          volume: this._volume * (file.volume || 1.0),
-          stereo: typeof file.pan === "number" ? file.pan : undefined
-        } as any);
-        file.howl.play();
+        file.howl = this.playHowl(file);
         if (file.fade)
           file.howl.fade(0, this._volume * (file.volume || 1.0), file.fade);
         this.loopFile(file);
@@ -128,33 +74,96 @@ export class SoundModel {
   public play() {
     this._state = "play";
     this.onStateChange.trigger(this.state);
+
     for (const file of this.files) {
       if (!file.random) {
-        file.howl.play();
-        if (file.loop) this.loopFile(file);
+        file.howl = this.playHowl(file);
+        if (this.type === "background" && !file.random) this.loopFile(file);
 
         if (this.type === "background")
           file.howl.fade(0.0, this._volume * (file.volume || 1.0), 2000);
       } else {
         setTimeout(() => {
           if (this.state === "stop") return;
-          if (file.pan === "random") file.howl.stereo(this.random(-1.0, 1.0));
-          file.howl.play();
+          file.howl = this.playHowl(file);
         }, file.random * 1000);
       }
     }
   }
+
+  private playHowl(
+    file: {
+      howl: Howl;
+    } & FileEntity
+  ) {
+    const howl = new Howl({
+      src: ["https://media.zottelig.ch/ambiente/audio/" + file.path],
+      volume: this._volume * (file.volume || 1.0),
+      stereo:
+        file.pan === "random"
+          ? file.howl.stereo(this.random(-1.0, 1.0))
+          : typeof file.pan === "number"
+          ? file.pan
+          : undefined
+    } as any);
+    howl.on("load", () => {
+      jsmediatags.read(
+        "https://media.zottelig.ch/ambiente/audio/" + file.path,
+        {
+          onSuccess: tag => {
+            const title = tag.tags.title;
+            const artist = tag.tags.artist;
+            const source = this.getUserTag(tag, "Source");
+            const license = this.getUserTag(tag, "License");
+            $(
+              `<li>${this.thing.name} - ${this.name}: ${title}${
+                artist ? ` erstellt von ${artist}` : ``
+              }${source ? ` kopiert von ${source}` : ``}${
+                license ? ` lizensiert unter ${license}` : ``
+              }</li>`
+            ).appendTo(".files");
+          },
+          onError: error => {
+            console.log(":(", error.type, error.info);
+          }
+        }
+      );
+    });
+    howl.on("end", () => {
+      if (this.type === "background") {
+        if (file.random) {
+          setTimeout(() => {
+            if (this.state === "stop") return;
+            if (file.pan === "random") file.howl.stereo(this.random(-1.0, 1.0));
+            file.howl.play();
+          }, file.random * 1000);
+        }
+      } else if (this.type === "effect") {
+        for (const f of this.files) {
+          if (f.howl.playing()) return;
+        }
+        this._state = "stop";
+        this.onStateChange.trigger(this.state);
+      }
+    });
+    howl.play();
+    return howl;
+  }
+
   public stop() {
     this._state = "stop";
     this.onStateChange.trigger(this.state);
     for (const file of this.files) {
+      const howl = file.howl;
+      if (!howl) return;
+
       if (this.type === "background") {
-        file.howl.fade(this._volume * (file.volume || 1.0), 0.0, 2000);
+        howl.fade(this._volume * (file.volume || 1.0), 0.0, 2000);
         setTimeout(() => {
           if (this.state === "play") return;
-          file.howl.stop();
+          howl.stop();
         }, 2000);
-      } else file.howl.stop();
+      } else howl.stop();
     }
   }
 
