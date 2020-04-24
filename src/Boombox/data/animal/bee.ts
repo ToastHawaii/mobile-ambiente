@@ -7,7 +7,7 @@ export const bee: ThingEntity = {
     {
       name: "Summen",
       emoji: "bee",
-      files: [{ path: "bee/beehive.mp3" }],
+      files: [{ path: "bee/beehive.mp3", fade: 1000 }],
       type: "background"
     }
   ]

@@ -3,6 +3,7 @@ export interface FileEntity {
   volume?: number;
   pan?: "random" | number;
   random?: number;
+  fade?: number;
 }
 
 export interface ThingEntity {

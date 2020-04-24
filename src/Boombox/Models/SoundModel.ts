@@ -38,11 +38,10 @@ export class SoundModel {
     this.type = soundEntity.type;
     const $files = $(".files");
     for (const fileEntity of soundEntity.files) {
+      debugger;
       const file = {
         howl: new Howl({
           src: ["https://media.zottelig.ch/ambiente/audio/" + fileEntity.path],
-          preload: false,
-          html5: true,
           volume: this._volume * (fileEntity.volume || 1.0),
           stereo:
             typeof fileEntity.pan === "number" ? fileEntity.pan : undefined
@@ -111,17 +110,18 @@ export class SoundModel {
       const duration = (file.howl as any)._sounds[0]._node.duration;
       setTimeout(() => {
         if (this.state === "stop") return;
-
+        if (file.fade)
+          file.howl.fade(this._volume * (file.volume || 1.0), 0, file.fade);
         file.howl = new Howl({
           src: ["https://media.zottelig.ch/ambiente/audio/" + file.path],
-          preload: false,
-          html5: true,
           volume: this._volume * (file.volume || 1.0),
           stereo: typeof file.pan === "number" ? file.pan : undefined
         } as any);
         file.howl.play();
+        if (file.fade)
+          file.howl.fade(0, this._volume * (file.volume || 1.0), file.fade);
         this.loopFile(file);
-      }, duration * 1000 - 50);
+      }, duration * 1000 - 50 - (file.fade || 0));
     });
   }
 

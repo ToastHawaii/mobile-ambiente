@@ -7,13 +7,13 @@ export const weather: ThingEntity = {
     {
       name: "Wind",
       emoji: "dash",
-      files: [{ path: "weather/mountain-wind.mp3" }],
+      files: [{ path: "weather/mountain-wind.mp3", fade: 1000 }],
       type: "background"
     },
     {
       name: "Regen",
       emoji: "cloud_rain",
-      files: [{ path: "weather/rain.mp3" }],
+      files: [{ path: "weather/rain.mp3", fade: 1000 }],
       type: "background"
     },
     {
