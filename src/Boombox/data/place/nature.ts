@@ -3,6 +3,7 @@ import { bird } from "../animal/bird";
 import { weather } from "../nature/weather";
 import { dog } from "../animal/dog";
 import { insect } from "../animal/insect";
+import { frog } from "../animal/frog";
 
 export const nature: ThingEntity = {
   name: "Nature",
@@ -30,5 +31,5 @@ export const nature: ThingEntity = {
       type: "background"
     }
   ],
-  things: [bird, dog, insect, weather]
+  things: [bird, dog, frog, insect, weather]
 };
