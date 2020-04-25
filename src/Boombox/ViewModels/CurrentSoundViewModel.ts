@@ -37,30 +37,32 @@ export class CurrentSoundViewModel {
     const popupTarget = $(selector + ".audio.item");
     const popup = $(selector + ".audio.popup");
 
-    popupTarget.popup({
-      popup: popup,
-      position: "top center",
-      on: "manual"
-    });
-    popupTarget.on("click", () => {
-      if (popup.hasClass("hidden")) {
-        popupTarget.popup("show");
-        (popup.children(".ui.slider") as any).slider({
-          min: 0,
-          max: 100,
-          step: 5,
-          start: this.volume * 100,
-          onMove: () => {
-            this.volume =
-              (popup.children(".ui.slider") as any).slider("get value") / 100;
-            this.model.volume = this.volume;
-          }
-        });
-        popupTarget.popup("show");
-      } else {
-        popupTarget.popup("hide");
-      }
-    });
+    popupTarget
+      .popup({
+        popup: popup,
+        position: "top center",
+        on: "manual",
+        lastResort: "top center"
+      })
+      .on("click", () => {
+        if (popup.hasClass("hidden")) {
+          popupTarget.popup("show");
+          (popup.children(".ui.slider") as any).slider({
+            min: 0,
+            max: 100,
+            step: 5,
+            start: this.volume * 100,
+            onMove: () => {
+              this.volume =
+                (popup.children(".ui.slider") as any).slider("get value") / 100;
+              this.model.volume = this.volume;
+            }
+          });
+          popupTarget.popup("show");
+        } else {
+          popupTarget.popup("hide");
+        }
+      });
 
     const $element = $(selector + ".control");
     this.$sound = $(`<span></span>`).appendTo($element);

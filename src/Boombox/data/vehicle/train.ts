@@ -7,7 +7,7 @@ export const train: ThingEntity = {
     {
       name: "Fahrt",
       emoji: "steam_locomotive",
-      files: [{ path: "train/steam-train.mp3" }],
+      files: [{ path: "train/steam-train.mp3", fade: 1000 }],
       type: "background"
     },
     {
