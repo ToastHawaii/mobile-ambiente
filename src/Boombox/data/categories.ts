@@ -5,6 +5,8 @@ import { nature } from "./nature";
 import { animal } from "./animal";
 import { CategorieEntity } from "../Entities";
 import { tool } from "./tool";
+import { voice } from "./voice";
+import { exoticAnimal } from "./exoticAnimal";
 
 export const categories: CategorieEntity[] = [
   place,
@@ -12,5 +14,7 @@ export const categories: CategorieEntity[] = [
   device,
   animal,
   tool,
-  nature
+  nature,
+  voice,
+  exoticAnimal
 ];

@@ -5,10 +5,9 @@ import { dog } from "./animal/dog";
 import { bird } from "./animal/bird";
 import { cat } from "./animal/cat";
 import { frog } from "./animal/frog";
-import { elephant } from "./animal/elephant";
 import { insect } from "./animal/insect";
 
 export const animal: CategorieEntity = {
   name: "Tier",
-  things: [bird, cat, dog, horse, cow, frog, elephant, insect]
+  things: [bird, cat, dog, horse, cow, frog, insect]
 };
