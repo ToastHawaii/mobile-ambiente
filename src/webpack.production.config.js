@@ -29,7 +29,7 @@ module.exports = {
         drop_console: true
       }
     }),
-    new CopyWebpackPlugin([{ from: "src/www" }])
+    new CopyWebpackPlugin({ patterns: [{ from: "src/www" }] })
   ],
   mode: "production",
 

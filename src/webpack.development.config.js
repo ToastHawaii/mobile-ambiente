@@ -20,7 +20,7 @@ module.exports = {
       filename: "inspiration.html"
     }),
     new webpack.NamedModulesPlugin(),
-    new CopyWebpackPlugin([{ from: "src/www" }])
+    new CopyWebpackPlugin({ patterns: [{ from: "src/www" }] })
   ],
   mode: "development",
   // Enable sourcemaps for debugging webpack's output.
