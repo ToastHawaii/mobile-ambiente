@@ -77,3 +77,15 @@ body {
 .audio.item {
   min-width: auto !important;
 }
+
+@media (prefers-color-scheme: dark) {
+  html {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+
+  html em,
+  html img,
+  html input[type="image"] {
+    filter: invert(100%) hue-rotate(-180deg);
+  }
+}
