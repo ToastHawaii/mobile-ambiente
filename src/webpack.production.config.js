@@ -26,7 +26,8 @@ module.exports = {
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
       skipWaiting: true,
-      exclude: [".yml", ".md", "_layouts/"]
+      additionalManifestEntries: ["/docs/index.html"],
+      exclude: [/\.yml$/g, /\.md$/g, /_layouts\/.*/g]
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
