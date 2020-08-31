@@ -28,6 +28,8 @@ module.exports = {
       skipWaiting: true,
       additionalManifestEntries: [
         "/docs/index.html",
+        "/semantic/dist/semantic.min.css",
+        "/semantic/dist/semantic.min.js",
         "https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
       ],
