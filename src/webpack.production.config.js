@@ -26,7 +26,11 @@ module.exports = {
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
       skipWaiting: true,
-      additionalManifestEntries: ["/docs/index.html"],
+      additionalManifestEntries: [
+        "/docs/index.html",
+        "https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+      ],
       exclude: [/\.yml$/g, /\.md$/g, /_layouts\/.*/g]
     }),
     new webpack.NamedModulesPlugin(),
