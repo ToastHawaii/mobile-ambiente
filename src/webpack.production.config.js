@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJSPlugin = require("uglify-es-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: "./src/script.ts",
@@ -19,6 +20,12 @@ module.exports = {
       // Load a custom template
       template: "src/inspiration.html",
       filename: "inspiration.html"
+    }),
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true,
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
