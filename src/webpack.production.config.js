@@ -2,7 +2,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJSPlugin = require("uglify-es-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: "./src/script.ts",
@@ -26,6 +26,7 @@ module.exports = {
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
       skipWaiting: true,
+      exclude: [".yml", ".md", "_layouts/"]
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
