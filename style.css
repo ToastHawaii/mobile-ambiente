@@ -78,6 +78,10 @@ body {
   min-width: auto !important;
 }
 
+[data-tab="Figur-Vorbild"] .ui.basic.button:last-of-type:after {
+  font-size: 2rem;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     filter: invert(100%) hue-rotate(180deg);
