@@ -1,0 +1,23 @@
+{
+    "name": "Inspirationen für Impro-Theater",
+    "short_name": "Inspiration",
+    "description": "Ambiente, Effekte und andere Inspirationen für improvisiertes Theater.",
+    "lang": "de",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#e6a100",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "/icons/favicon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/favicon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
