@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "start": "webpack-dev-server --config src/webpack.development.config.js --progress --inline --colors",
     "build:development": "webpack --config src/webpack.development.config.js --watch",
     "build:production": "webpack --config src/webpack.production.config.js"
   },
