@@ -2,7 +2,6 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJSPlugin = require("uglify-es-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: "./src/script.ts",
