@@ -1,6 +1,6 @@
 # Ambiente
 
-![A man with a red nose. He holds his hands as if he wanted to direct traffic. In the background there are cars.](https://media.zottelig.ch/clown.jpg "There is nothing to see here!")
+<img alt="A man with a red nose. He holds his hands as if he wanted to direct traffic. In the background there are cars." title="There is nothing to see here!" src="https://media.zottelig.ch/clown.jpg" style="max-width:100px;">
 
 ## Development
 
