@@ -22,7 +22,7 @@
     "@types/jquery": "3.3.33",
     "@types/semantic-ui": "2.2.7",
     "@types/jsmediatags": "3.9.1",
-    "fomantic-ui": "2.8.6",
+    "fomantic-ui": "2.8.7",
     "howler": "2.2.0",
     "jsmediatags": "3.9.3",
     "diff": "4.0.2",
